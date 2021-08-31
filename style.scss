@@ -12,13 +12,20 @@
     flex-direction: $direction;
 }
 
+@mixin theme($light-theme) {
+    @if $light-theme {
+        background: lighten($primary-color, 100%);
+        color: darken($text-color, 100%);
+    }
+}
+
 body {
     background-color: $primary-color;
     color: $text-color;
 }
 
 .main {
-    @include flexCenter(column);
+    @include flexCenter(row);
     width: 80%;
     margin: 0 auto;
 
@@ -29,4 +36,8 @@ body {
             color: pink;
         }
     }
+}
+
+.light {
+    @include theme(true);
 }
