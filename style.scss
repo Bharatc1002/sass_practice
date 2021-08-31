@@ -1,11 +1,16 @@
-$primary-color: grey;
-$accent-color: blue;
-$text-color: yellow;
-$font-weights: (
-    "regular": 400,
-    "medium": 500,
-    "bold": 700
-);
+@import './resets';
+@import './variables';
+
+@function weight($weight-name){
+    @return map-get($font-weights, $weight-name );
+}
+
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
 
 body {
     background-color: $primary-color;
@@ -13,11 +18,12 @@ body {
 }
 
 .main {
+    @include flexCenter(column);
     width: 80%;
     margin: 0 auto;
 
     #{&}__paragraph {
-        font-weight: map-get($font-weights, bold);
+        font-weight: weight(bold);
 
         &:hover {
             color: pink;
